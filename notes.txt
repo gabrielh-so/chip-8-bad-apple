@@ -1,0 +1,26 @@
+4096 bytes of memory (implemented via array)
+
+set pc to 0x200 to start with
+
+16 general purpose 8 bit regesters V0-VF. VF is a flag register for some instructions
+
+16 bit I register for memory addresses (lowest 12 bits are actually used, unless memory is larger)
+
+special registers for delay and sound. both are decremented at 60Hz. when delay and sound reaches 0 they stop decrementing. when sound is above 0 buzzer sounds.
+
+16 bit PC and 8-bit SP. 16 size stack, stored in array? Probably for the best
+
+hex keyboard (0-F) 64x32 b&w display, origin is top left
+
+fonts representing keyboard input should be stored in interpreter's memory space
+
+REGISTERS:
+V0-F, I, DF, SF, PC, SP
+
+DATA STRUCTURES:
+main memory - 4096 bytes.
+Stack memory - 16 * 16 bit
+
+
+
+when updating key presses, call the keyboard device from the main thread. the device should update the register directly
