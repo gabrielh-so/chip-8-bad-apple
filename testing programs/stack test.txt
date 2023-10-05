@@ -1,0 +1,52 @@
+
+a: run subroutine at 206
+increment V[0]
+add 5 to V[1]
+add 5 to V[2]
+jump to a
+
+subroutine: get sprite address of V[0]
+draw sprite at V[1] V[2]
+return from subroutine
+
+        mem[200] = 16 * 6 + 3;
+        mem[201] = 60;
+
+        mem[202] = 16 * 2 + 0;
+        mem[203] = 218;
+
+        mem[204] = 16 * 7 + 0;
+        mem[205] = 16 * 0 + 0;
+
+        mem[206] = 16 * 7 + 1;
+        mem[207] = 16 * 0 + 5;
+
+        mem[208] = 16 * 7 + 2;
+        mem[209] = 16 * 0 + 5;
+
+        mem[210] = 16 * 15 + 3;
+        mem[211] = 16 * 1 + 5;
+
+        // set v[3] to DT
+        mem[212] = 16 * 15 + 3;
+        mem[213] = 16 * 0 + 7;
+
+        // skip next instruction if v[3] == 0
+        mem[214] = 16 * 3 + 3;
+        mem[215] = 16 * 0 + 0;
+
+        // jump back to 204
+        mem[216] = 16 * 1 + 0;
+        mem[217] = 210;
+
+        mem[218] = 16 * 1 + 0;
+        mem[219] = 198;
+
+        mem[220] = 16 * 15 + 0;
+        mem[221] = 16 * 2 + 9;
+
+        mem[222] = 16 * 13 + 1;
+        mem[223] = 16 * 2 + 5;
+
+        mem[224] = 16 * 0 + 0;
+        mem[225] = 16 * 14 + 14;

@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -Wall -O0 -Wl,--no-as-needed -ldl -lm -lX11 -pthread -lSDL2 CMakeFiles/chip-8.dir/Chip8.cpp.o CMakeFiles/chip-8.dir/Program.cpp.o -o chip-8 

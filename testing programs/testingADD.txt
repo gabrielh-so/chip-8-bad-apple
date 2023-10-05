@@ -1,0 +1,43 @@
+        // get V[15] sprite address
+        mem[200] = 16 * 15 + 15;
+        mem[201] = 16 * 2 + 9;
+
+        // draw sprite
+        mem[202] = 16 * 13 + 3;
+        mem[203] = 16 * 4 + 5;
+        
+        // add 5 to write pointer location
+        mem[204] = 16 * 7 + 3;
+        mem[205] = 16 * 0 + 5;
+        
+        // key input into V[0]
+        mem[206] = 16 * 15 + 0;
+        mem[207] = 16 * 0 + 10;
+        
+        // set V[1] to 246
+        mem[208] = 16 * 6 + 1;
+        mem[209] = 246;
+        
+        // perform add operation and save in V[0]
+        mem[210] = 16 * 8 + 0;
+        mem[211] = 16 * 1 + 4;
+
+        // skip next instruction if V[0] is equal to 255
+        mem[212] = 16 * 3 + 0;
+        mem[213] = 255;
+
+        // loop back to start
+        mem[214] = 16 * 1 + 0;
+        mem[215] = 198;
+        
+        // skip next instruction if V[0] is equal to 255
+        mem[216] = 16 * 3 + 0;
+        mem[217] = 255;
+
+        // loop back to start
+        mem[218] = 16 * 1 + 0;
+        mem[219] = 198;
+
+        // loop forever
+        mem[220] = 16 * 1 + 0;
+        mem[221] = 218;

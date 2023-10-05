@@ -1,0 +1,53 @@
+SYS addr
+CLS
+RET
+JP addr
+CALL addr
+SE Vx, byte
+SNE Vx, byte
+SE Vx, Vy
+LD Vx, byte
+ADD Vx, byte
+LD Vx, Vy
+OR Vx, Vy
+AND Vx, Vy
+XOR Vx, Vy
+ADD Vx, Vy
+SUB Vx, Vy
+SHR Vx {, Vy}
+SUBN Vx, Vy
+SHL Vx {, Vy}
+SNE Vx, Vy
+LD I, addr
+JP V0, addr
+RND Vx, byte
+DRW Vx, Vy, nibble
+SKP Vx
+SKNP Vx
+LD Vx, DT
+LD Vx, K
+LD DT, Vx
+LD ST, Vx
+ADD I, Vx
+LD F, Vx
+LD B, Vx
+LD [I], Vx
+LD Vx, [I]
+
+
+#alias something Vx
+a: ADD Vx, byte
+ADD Vx, Vy
+ADD I, Vx
+
+LD Vx, byte
+LD Vx, Vy
+LD I, addr
+LD Vx, DT
+LD Vx, K
+LD DT, Vx
+LD ST, Vx
+LD F, Vx
+LD B, Vx
+LD [I], Vx
+LD Vx, [I]

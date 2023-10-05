@@ -1,0 +1,46 @@
+  #alias counter V0
+  #alias draw_x V1
+  #alias draw_y V2
+  #alias delay_time V4
+  #alias wait_counter V5
+  
+  #alias shape_draw_x V6
+  #alias shape_draw_y V7
+  #alias shape_draw_offset V8
+  
+  #sprite cross 0x82 0x44 0x28 0x10 0x28 0x44 0x82
+  #sprite tri 0x10 0x28 0x44 0xFE
+
+  LD delay_time 30
+  LD shape_draw_offset 10
+  LD shape_draw_x 0
+  LD shape_draw_y 10
+start:
+  CALL drawRoutine
+  ADD counter 1
+  SNE counter 16
+  LD counter 0
+
+  ADD draw_x 5
+  SE draw_x 60
+  JP waitStart
+  ADD draw_y 6
+  LD draw_x 0
+waitStart:
+  LD DT delay_time
+waitLoop:
+  LD wait_counter DT
+  SE wait_counter 0
+  JP waitLoop
+  JP start
+
+drawRoutine:
+  LD F counter
+  DRW draw_x draw_y #sprite_length
+  LD I #cross_address
+  DRW shape_draw_x shape_draw_y #cross_length
+  ADD shape_draw_x shape_draw_offset
+  LD I #tri_address
+  DRW shape_draw_x shape_draw_y #tri_length
+  SUB shape_draw_x shape_draw_offset
+  RET

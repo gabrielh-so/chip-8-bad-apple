@@ -1,0 +1,26 @@
+what is there?
+
+memory
+sprites
+instructions
+aliases []
+
+properly sort out regex for these to be consistent/
+
+
+what needs to be checked?
+no shared sprites/aliases
+
+where the program starts
+whether to prune trailing zeros on output
+
+start point of sprite storage (default end)
+direction of sprite storage (default backwards)
+
+X     X
+ X   X
+  X X
+   X
+  X X
+ X   X
+X     X

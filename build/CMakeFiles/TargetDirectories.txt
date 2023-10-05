@@ -1,0 +1,3 @@
+/home/gabriel/Documents/bad_apple/build/CMakeFiles/chip-8.dir
+/home/gabriel/Documents/bad_apple/build/CMakeFiles/edit_cache.dir
+/home/gabriel/Documents/bad_apple/build/CMakeFiles/rebuild_cache.dir

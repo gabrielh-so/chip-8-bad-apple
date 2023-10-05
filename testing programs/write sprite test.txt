@@ -1,0 +1,29 @@
+a: set I to the location of sprite v[0]
+draw 5 byte sprite at v[1] v[2]
+increment v[0]
+v[2] += 5
+if v[0] == 4 skip next
+jump to a
+b: jump to b
+
+
+mem[200] = 16 * 15 + 0;
+mem[201] = 16 * 2 + 9;
+
+mem[202] = 16 * 13 + 1;
+mem[203] = 16 * 2 + 5;
+
+mem[204] = 16 * 7 + 0;
+mem[205] = 16 * 0 + 1;
+
+mem[206] = 16 * 7 + 2;
+mem[207] = 16 * 0 + 5;
+
+mem[206] = 16 * 3 + 0;
+mem[207] = 16 * 0 + 4;
+
+mem[208] = 16 * 1 + 0;
+mem[209] = 198;
+
+mem[210] = 16 * 1 + 0;
+mem[211] = 208;

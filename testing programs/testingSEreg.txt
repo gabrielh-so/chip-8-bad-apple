@@ -1,0 +1,19 @@
+        // key input into V[0]
+        mem[200] = 16 * 15 + 0;
+        mem[201] = 16 * 0 + 10;
+        
+        // key input into V[1]
+        mem[202] = 16 * 15 + 1;
+        mem[203] = 16 * 0 + 10;
+
+        // skip next instruction if input is equal
+        mem[204] = 16 * 5 + 0;
+        mem[205] = 16 * 1 + 0;
+
+        // loop back to start
+        mem[206] = 16 * 1 + 0;
+        mem[207] = 198;
+
+        // loop forever
+        mem[208] = 16 * 1 + 0;
+        mem[209] = 206;

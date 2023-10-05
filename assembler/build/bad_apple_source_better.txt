@@ -1,0 +1,90 @@
+  ; notes: very difficult to switch instruction register between pixel sprite location and video buffer location
+
+  ; assumptions:
+  ; video file is less than 2MB
+  ; video information starts at byte 4000
+  ; video information for each row of each frame consists of:
+  ; a value for pixel colour
+  ; a value for number of following pixels that are that colour
+  ; video pixel byte stored at 3000 (nowhere near anything else)
+  ; address register increased to unsigned 32 bit (to be able to address video)
+  ; seperate address register for sprite writing (initialised at 3000 to avoid seperate instruction to set it)
+  ; drawfunction will draw a hardcoded value (1 pixel/byte)
+  
+  #sprite pixel 0x80
+  
+  ; set I to 4000
+  ; set VE to 1
+  ; frameloop
+  ; set V2 to 0
+  ; 
+  ; 
+  ; rowloop
+  ; set V1 to 0
+  ; set V6 to 0
+  ; blockLoop
+  ; 
+  ; read value from I, store in V4
+  ; if V6 == 0:
+  ;   add V4 to V1
+  ;   set V6 to 1
+  ; otherwise:
+  ;   WRITELOOP
+  ;   draw V1 V2 #pixel_length
+  ;   increment V1
+  ;   sub 1 from V4
+  ;   if V4 != 0, jump to writeloop
+  ;   set V6 to 0
+  ; 
+  ; if V1 != 64
+  ;   jump to blockLoop
+  ; increment V2
+  ; if V2 == 32:
+  ;   wait until DT counter decrements from 1
+  ;   jump to frameloop
+  ; jump to rowloop
+  
+  #alias one VE
+  #alias two VD
+  
+  LD I 4000
+  LD one 1
+  LD two 2
+frameLoop:
+  LD V2 0
+rowLoop:
+  LD V1 0
+  LD V6 0
+blockLoop:
+  LD V0 I
+  LD V4 V0
+  ADD I one
+  SE V6 0
+  JP writeLoop
+  ADD V1 V4
+  LD V6 1
+  JP endWrite
+writeLoop:
+  DRW V1 V2 #pixel_length
+  ADD V1 1
+  SUB V4 one
+  SE V4 0
+  JP writeLoop
+  LD V6 0
+  
+endWrite:
+  SE V1 64
+  JP blockLoop
+  ADD V2 1
+  SE V2 32
+  JP rowLoop
+  LD DT two
+delayLoop:
+  LD V5 DT
+  SE V5 0
+  JP delayLoop
+  JP frameLoop
+  
+  ; V1, V2 - coordinates to draw to the screen
+  ; V3, current value
+  ; V4, pixels left to draw
